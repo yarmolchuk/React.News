@@ -11,14 +11,13 @@ const Main = () => {
 
     useEffect(() => {
         const fetchNews  = async () => {
-            setIsLoading(true)
             try {
+                setIsLoading(true)
                 const response = await getNews();
                 setNews(response.news);
+                setIsLoading(false);
             } catch (error) {
                 console.log(error);
-            } finally {
-                setIsLoading(false);
             }
         }
         fetchNews()
