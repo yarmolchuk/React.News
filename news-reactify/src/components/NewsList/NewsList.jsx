@@ -1,11 +1,12 @@
 import styles from "./styles.module.css";
 import NewsItem from "../NewsItem/NewsItem";
+import withSkeleton from "../../helpers/hock/withSkeleton.jsx";
  
 const NewsList = ({ news }) => {
   return (
     <ul className={styles.list}>
       {
-        news.map( item => {
+        news?.map( item => {
           return <NewsItem key={item.id} item={item} />
         })
       }
@@ -13,4 +14,6 @@ const NewsList = ({ news }) => {
   );
 };
 
-export default NewsList;
+const NewsListWithSkeleton = withSkeleton(NewsList, "list", 10);
+
+export default NewsListWithSkeleton;
