@@ -1,14 +1,11 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 
 export const useFetch = (fetchFunction, params) => {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const stringParams = useMemo(
-        () => params ? JSON.stringify(params) : "",
-        [params ? JSON.stringify(params) : ""]
-    );
+    const stringParams = params ? JSON.stringify(params) : "";
 
     useEffect(() => {
         (async () => {
@@ -22,8 +19,7 @@ export const useFetch = (fetchFunction, params) => {
                 setIsLoading(false)
             }
         })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stringParams])
+    }, [stringParams, fetchFunction])
 
     return { data, isLoading, error }
 }
