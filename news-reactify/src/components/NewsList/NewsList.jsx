@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import NewsItem from "../NewsItem/NewsItem";
-import withSkeleton from "../../helpers/hock/withSkeleton.jsx";
+import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
  
 const NewsList = ({ news }) => {
   return (
